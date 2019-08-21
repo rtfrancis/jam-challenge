@@ -34,7 +34,7 @@ class Songs extends Component{
                         <Player song={ item.music_file_path } updatePlayingStatus={this.props.updatePlayingStatus} status={this.props.playStatus}
                         />
                         <LikeMe id={item.id}/>
-                        <Comment />
+                        <Comment id={item.id}/>
                     </div>
                 })}
             </div>

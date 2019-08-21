@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import Songs from "./songs"
-import Pagination from "./pagination"
+import Songs from "./songs";
+import Pagination from "./pagination";
+import Footer from "./footer";
 
 class App extends Component{
     constructor(props){
@@ -43,8 +44,6 @@ class App extends Component{
             this.setState({
                 songs: results.data
             })
-            // console.log("returned from API: ", results);
-            // console.log("state check: ", this.state);
         })
     }
     render(){
@@ -55,8 +54,9 @@ class App extends Component{
         let indexOfFirstPost = indexOfLastPost - this.state.numPerPage;
         let updatedSongList = this.state.songs.slice(indexOfFirstPost, indexOfLastPost)
         // console.log("BIG LOG", indexOfFirstPost, indexOfLastPost, currentPosts);
-        return <div>
+        return <div id="mainPage">
             <img id="logo" src="/logo.png" alt="JAM logo"/>
+            <p>Results per page:</p>
             <select id="resultNum" name="perPage" onChange={this.songsPerPage}>
                 <option value='2'>2</option>
                 <option value='5'>5</option>
@@ -68,7 +68,7 @@ class App extends Component{
             <Pagination numPerPage={this.state.numPerPage}  totalResults={this.state.songs.length} updatePageNumber={this.updatePageNumber}
             currentPage={this.state.currentPage}
             />
-
+            <Footer />
         </div>
     }
 }
