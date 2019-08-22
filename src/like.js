@@ -8,12 +8,16 @@ class likeMe extends Component{
         this.likeSong = this.likeSong.bind(this);
     }
     likeSong(){
-        console.log(this.props.id);
         this.setState({
             liked: "/likeRed.png"
         })
-        axios.post("/like", {id: this.props.id}).then(result =>
-        console.log(result))
+        axios.post("/like", {id: this.props.id}).then(result => {
+            if(!result.data.success){
+                this.setState({
+                    liked: false
+                })
+            }
+        })
     }
     render(){
         return (

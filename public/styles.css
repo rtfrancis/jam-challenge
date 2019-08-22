@@ -12,7 +12,7 @@ body{
     display: block;
     margin: 0 auto;
     margin-top: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 select{
@@ -22,7 +22,7 @@ select{
     width: 40px;
     outline: none;
     font-size: 15px;
-
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
 }
 
 #mainPage p{
@@ -33,13 +33,6 @@ select{
 
 /* ///////////  songs /////////////// */
 
-/* #songsContainer {
-    /* width: 70%; */
-    /* margin: 0 auto; */
-    /* border: 1px solid white; */
-    /* border-radius: 25px; */
-
-
 .eachSong {
     display: block;
     margin: 0 auto;
@@ -49,7 +42,8 @@ select{
     position: relative;
     background-color: white;
     border-radius: 25px;
-    box-shadow: 5px 5px rgba(0, 0, 0, .1)
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+
 }
 
 .imageContainer {
@@ -65,8 +59,7 @@ select{
 .coverImage {
     width: 200px;
     margin-right: 20px;
-    /* margin-left: 50px; */
-    /* position: absolute; */
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
 }
 
 .songTitle{
@@ -74,8 +67,10 @@ select{
     position: absolute;
     font-weight: 500;
     top: 50px;
-    /* margin: 0 auto; */
-    /* left: 50px; */
+}
+
+.iconContainer{
+    display: inline-block;
 }
 
 /* ////////  like button /////////// */
@@ -84,6 +79,11 @@ select{
     width: 50px;
     cursor: pointer;
     margin-top: 5px;
+    outline: none;
+}
+
+.heart:active {
+    transform: translateY(2px);
 }
 
 .heartContainer{
@@ -97,17 +97,20 @@ select{
     cursor: pointer;
     margin-right: 20px;
     border-radius: 50%;
-    box-shadow: 5px 5px rgba(0, 0, 0, .1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+}
+
+.audioButtons:active {
+    transform: translateY(2px);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .audioPlayer{
     display: inline-block;
-    /* position: absolute; */
 }
 
 .activeAudio{
     background: rgba(0, 0, 0, .2);
-    /* border-radius: 50%; */
 }
 
 .inactiveAudio{
@@ -128,24 +131,27 @@ select{
     position: absolute;
     height: 200px;
     width: 200px;
-    /* border: 1px solid black; */
     right: 30px;
-    top: 15px;
+    top: 10px;
     text-align: center;
 }
 
 .submitButton{
     width: 90px;
     padding: 5px 10px;
-    /* border: 1px solid black; */
-    background: rgba(0, 0, 0, .06);
     border-radius: 30px;
-    box-shadow: 5px 5px rgba(0, 0, 0, .1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+    background: rgba(0, 0, 0, .06);
     cursor: pointer;
 }
 
+.submitButton:active {
+    transform: translateY(2px);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3); }
+
 textarea{
     resize: none;
+    outline: none;
 }
 
 .timestamp{
@@ -157,16 +163,14 @@ textarea{
 
 
 /* ///////////  pagination  //////////// */
+
 #pageNumbers{
-    /* width: 10%; */
     max-width: 20%;
     display: flex;
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 50px;
     flex-direction: row;
-    /* border: 1px solid black; */
-    /* padding: 10px; */
     justify-content: space-around;
 }
 
@@ -174,30 +178,91 @@ textarea{
     border: 1px solid white;
     background: white;
     border-radius: 30px;
-    box-shadow: 5px 5px rgba(0, 0, 0, .1);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
     width: 30px;
     margin-right: 40px;
-    /* text-align: center; */
     display: inline;
     padding: 13px;
     padding-right: 20px;
     cursor: pointer;
 }
 
+.page:active {
+    transform: translateY(2px);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3); }
+
 .active{
     background: rgba(59, 172, 237, .15);
 }
 
-/* ///////// footer //////////////  */
-
+/* /////////// footer //////////////  */
 
 #footer{
     height: 30px;
     background-color: white;
-    padding: 10px;
+    padding-top: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 12px;
     color: #a5a2a2;
+}
+
+
+@media screen and (max-width: 700px){
+    .eachSong{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 660px){
+    .eachSong{
+        width: 80%;
+        height:auto;
+        padding: 25px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .imageContainer{
+        display: block;
+        position: static;
+        margin: 0 auto;
+    }
+    .commentContainer{
+        position: static;
+    }
+    .songTitle{
+        display: block;
+        position: static;
+        margin: 0 auto;
+        margin-top: 25px;
+        text-align: center;
+    }
+    .iconContainer{
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .commentContainer{
+        margin: 0 auto;
+        margin-top: -15px;
+        height: 150px;
+    }
+    textarea{
+        border: 1px solid black;
+        height: 40px;
+        width: 85%;
+    }
+    #pageNumbers{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .page{
+        margin-right: 15px;
+    }
+    select{
+        font-size: 15px;
+        width: 50px;
+    }
 }

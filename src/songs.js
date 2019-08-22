@@ -6,22 +6,10 @@ import Player from "./audioPlayer";
 class Songs extends Component{
     constructor(props){
         super(props);
-        this.state = {
-
-        }
-        // this.updatePlayingStatus = this.updatePlayingStatus.bind(this);
-    }
-    // updatePlayingStatus(status){
-    //     this.setState({
-    //         active: status
-    //     })
-    // }
-    componentDidMount(){
-        console.log("props from APP: ", this.props);
+        this.state = {}
     }
     render(){
         if(!this.props.songs){
-            console.log("nothing");
             return null;
         }else{
             return <div id="songsContainer">
@@ -31,9 +19,11 @@ class Songs extends Component{
                             <img className="coverImage" src={item.cover_image_path} alt="cover art"/>
                         </div>
                         <h2 className="songTitle">{ item.name }</h2>
-                        <Player song={ item.music_file_path } updatePlayingStatus={this.props.updatePlayingStatus} status={this.props.playStatus}
-                        />
-                        <LikeMe id={item.id}/>
+                        <div className="iconContainer">
+                            <Player song={ item.music_file_path } updatePlayingStatus={this.props.updatePlayingStatus} status={this.props.playStatus}
+                            />
+                            <LikeMe id={item.id}/>
+                        </div>
                         <Comment id={item.id}/>
                     </div>
                 })}

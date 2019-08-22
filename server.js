@@ -16,9 +16,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-
 app.get('/songs', (req, res) => {
-    console.log("YOU MADE IT");
     request('https://api-stg.jam-community.com/song/trending', function (error, response, body) {
       if(!error && response.statusCode == 200) {
         res.json(JSON.parse(body))
@@ -27,7 +25,6 @@ app.get('/songs', (req, res) => {
 })
 
 app.post('/like', (req, res) => {
-    console.log(req.body);
     request.post({url: 'https://api-stg.jam-community.com/interact/like? apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8', form: {id:req.body.id}}, function (error, response, body) {
           if (!error && response.statusCode == 200) {
             res.json({success: true});
@@ -38,10 +35,8 @@ app.post('/like', (req, res) => {
 })
 
 app.post('/comment', (req, res) => {
-    console.log(req.body);
     request.post({url: 'https://api-stg.jam-community.com/interact/like? apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8', form: {id:req.body.id, type: "song", message: req.body.message}}, function (error, response, body) {
           if (!error && response.statusCode == 200) {
-            // let result = JSON.parse(body);
             res.json({success: true, date: moment().format("MMM Do YY")});
         } else {
             res.json({success: false});
@@ -49,4 +44,4 @@ app.post('/comment', (req, res) => {
     });
 })
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080, () => console.log("Listening"));

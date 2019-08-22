@@ -12,11 +12,8 @@ class Comment extends Component{
         this[e.target.name] = e.target.value;
     }
     submitComment(e){
-        console.log("comment text", this.comment, this.text.value);
-
         if(this.comment !== undefined){
             axios.post("/comment", {id: this.props.id, message: this.comment, type: "song"}).then(({data}) => {
-                console.log(data);
                 if(data.success){
                     this.text.classList.add = "hidden";
                     this.setState({
@@ -25,15 +22,12 @@ class Comment extends Component{
                     })
                     this.text.value = "";
                 } else {
-                    console.log("there was an error");
                     this.setState({
                         comment: "Sorry. A problem occured. Please try again."
                     })
                 }
             })
-
         } else {
-            console.log("nope!");
             this.setState({
                 comment: "Sorry. A problem occured. Please try again."
             })
@@ -43,7 +37,7 @@ class Comment extends Component{
     render(){
         return <div className="commentContainer">
                     <div>{ this.state.comment && this.state.comment}
-                    <div className="timestamp">{ this.state.timestamp && this.state.timestamp}</div>
+                        <div className="timestamp">{ this.state.timestamp && this.state.timestamp}</div>
                     </div>
                     <div className={this.state.comment ? "hidden" : ""}>Leave a comment:</div>
                     <textarea rows="5" cols="25" type="text" name="comment" className={this.state.comment ? "hidden" : ""}

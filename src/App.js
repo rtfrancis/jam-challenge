@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from "axios";
 import Songs from "./songs";
 import Pagination from "./pagination";
-import Footer from "./footer";
 
 class App extends Component{
     constructor(props){
@@ -18,15 +17,12 @@ class App extends Component{
     }
     songsPerPage(e){
         const resultsPerPage = Number(e.target.value);
-        // console.log("????", Number(resultsPerPage));
         this.setState({
             numPerPage: resultsPerPage,
             currentPage: 1,
-            // playStatus: false
         });
     }
     updatePageNumber(num){
-        // console.log("LOGGING NUMBER", num);
         this.setState({
             currentPage: num,
             playStatus: false
@@ -40,7 +36,6 @@ class App extends Component{
     componentDidMount(){
         return axios.get("/songs")
         .then(results => {
-            console.log(results.data);
             this.setState({
                 songs: results.data
             })
@@ -53,7 +48,6 @@ class App extends Component{
         let indexOfLastPost = this.state.currentPage * this.state.numPerPage;
         let indexOfFirstPost = indexOfLastPost - this.state.numPerPage;
         let updatedSongList = this.state.songs.slice(indexOfFirstPost, indexOfLastPost)
-        // console.log("BIG LOG", indexOfFirstPost, indexOfLastPost, currentPosts);
         return <div id="mainPage">
             <img id="logo" src="/logo.png" alt="JAM logo"/>
             <p>Results per page:</p>
@@ -68,7 +62,9 @@ class App extends Component{
             <Pagination numPerPage={this.state.numPerPage}  totalResults={this.state.songs.length} updatePageNumber={this.updatePageNumber}
             currentPage={this.state.currentPage}
             />
-            <Footer />
+            <div id="footer">
+                <p>Created in 2019 for Just Add Music</p>
+            </div>
         </div>
     }
 }
